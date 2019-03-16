@@ -18,7 +18,7 @@ public class Menu {
         System.out.println("2 - wyświetl listę");
         System.out.println("3 - sortuj listę");
         System.out.println("4 - sprzedaj pojazd");
-        System.out.println("5 - wyświetl przychód");
+        System.out.println("5 - wyświetl stan konta");
         System.out.println("6 - koniec");
     }
 

@@ -1,8 +1,6 @@
 package org.pl.komis.car;
 
 import org.pl.komis.account.Account;
-import org.pl.komis.car.Car;
-import org.pl.komis.car.CarType;
 import org.pl.komis.menu.MenuUtils;
 
 import java.math.BigDecimal;
@@ -11,7 +9,6 @@ import java.util.List;
 
 public class CarList {
     public static List<Car> carList = new ArrayList<Car>();
-    public static BigDecimal account = new BigDecimal(0);
 
     public static void addCarToList() {
 
@@ -42,11 +39,11 @@ public class CarList {
     }
 
     public static void removeCarFromList(int index) {
-        if (index<carList.size()-1 && index>=0){
-            Account.setAccount(carList.get(index).getPrice());
+        if (index<=carList.size()-1 && index>=0){
+            Account.setAccount(Account.getAccount().add(carList.get(index).getPrice()));
             carList.remove(index);
         }else{
-            System.out.println("Zły index");
+            System.out.println("złe id");
         }
     }
 
