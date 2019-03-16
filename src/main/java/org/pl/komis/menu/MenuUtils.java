@@ -37,6 +37,7 @@ public class MenuUtils {
     }
 
     //pobierz typ auta od usera
+    //TODO poprawić pobieranie typu, po błędnym podaniu typu nie przyjmuje poprawnego
     public static CarType getCarTypeFromUser() {
         Scanner input = new Scanner(System.in);
         while (true) {
@@ -44,9 +45,11 @@ public class MenuUtils {
             for (CarType carType : CarType.values()) {
                 if (carType.name().equals(type)) {
                     return carType;
+                } else {
+                    input.nextLine();
                 }
             }
-            input.next();
+            input.nextLine();
         }
     }
 }
