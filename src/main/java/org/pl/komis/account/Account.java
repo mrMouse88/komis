@@ -16,7 +16,6 @@ public class Account {
     }
 
 
-
     public static void saveAccount() {
         try {
             //przygotowanie pliku
@@ -46,7 +45,8 @@ public class Account {
             read.close();
 
         } catch (FileNotFoundException e) {
-            state="0";
+            //jeśli brak pliku przypisz 0 do stanu konta
+            state = "0";
         } catch (IOException e) {
             e.printStackTrace();
         }
