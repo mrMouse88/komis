@@ -58,10 +58,4 @@ public class Account {
         }
     }
 
-    public static void main(String[] args) {
-        loadAccount();
-        System.out.println(account);
-        setAccount(getAccount().add(new BigDecimal(123)));
-        saveAccount();
-    }
 }

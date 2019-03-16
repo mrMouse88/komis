@@ -92,6 +92,7 @@ public class Menu {
                     //zakończ program
                     case 6:
                         flag = false;
+                        Account.saveAccount();
                         break;
                     //źle wybrana opcja menu
                     default:

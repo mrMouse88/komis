@@ -1,5 +1,6 @@
 package org.pl.komis;
 
+import org.pl.komis.account.Account;
 import org.pl.komis.auth.Authorization;
 import org.pl.komis.car.Car;
 import org.pl.komis.car.CarList;
@@ -14,6 +15,7 @@ public class Main {
         Authorization auth = new Authorization();
 
         if(auth.checkAuthorization(auth.getPassword())){
+            Account.loadAccount();
             Menu.mainMenu();
 
         }else{
