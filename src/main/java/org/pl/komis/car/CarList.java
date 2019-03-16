@@ -3,9 +3,11 @@ package org.pl.komis.car;
 import org.pl.komis.account.Account;
 import org.pl.komis.menu.MenuUtils;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class CarList {
     public static List<Car> carList = new ArrayList<Car>();
@@ -39,10 +41,10 @@ public class CarList {
     }
 
     public static void removeCarFromList(int index) {
-        if (index<=carList.size()-1 && index>=0){
+        if (index <= carList.size() - 1 && index >= 0) {
             Account.setAccount(Account.getAccount().add(carList.get(index).getPrice()));
             carList.remove(index);
-        }else{
+        } else {
             System.out.println("złe id");
         }
     }
@@ -52,5 +54,56 @@ public class CarList {
             System.out.print("Id: " + i + " ");
             System.out.println(carList.get(i).toString());
         }
+        System.out.println();
     }
+
+    public static void saveCarListToFile() {
+        try {
+            //przygotowanie pliku
+            PrintWriter writer = new PrintWriter(new FileWriter("baza.txt"));
+
+            //dla kazdej pozycji z listy odczytaj do stringa z tokenem | i dodaj do pliku
+            for (Car car : carList) {
+                StringBuilder row = new StringBuilder();
+                row.append(car.getBrand());
+                row.append("|");
+                row.append(car.getModel());
+                row.append("|");
+                row.append(car.getPrice());
+                row.append("|");
+                row.append(car.getColor());
+                row.append("|");
+                row.append(car.getMileage());
+                row.append("|");
+                row.append(car.getYear());
+                row.append("|");
+                row.append(car.getCarType());
+                writer.println(row);
+            }
+
+            //zamknięcie plik
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadCarListFromFile() {
+        String row = null;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("baza.txt"));
+            while ((row = reader.readLine()) != null) {
+                StringTokenizer tokenizer = new StringTokenizer(row, "|");
+                Car car = new Car(tokenizer.nextToken(),tokenizer.nextToken(),new BigDecimal(tokenizer.nextToken()), tokenizer.nextToken(),
+                        Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), CarType.valueOf(tokenizer.nextToken()));
+                carList.add(car);
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Brak pliku bazy danych");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

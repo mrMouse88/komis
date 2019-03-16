@@ -15,7 +15,11 @@ public class Main {
         Authorization auth = new Authorization();
 
         if(auth.checkAuthorization(auth.getPassword())){
+            //załaduj stan konta z pliku
             Account.loadAccount();
+            //załaduj listę aut z pliku
+            CarList.loadCarListFromFile();
+            //uruchom główne menu
             Menu.mainMenu();
 
         }else{

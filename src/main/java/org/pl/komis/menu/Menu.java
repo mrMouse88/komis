@@ -93,6 +93,7 @@ public class Menu {
                     case 6:
                         flag = false;
                         Account.saveAccount();
+                        CarList.saveCarListToFile();
                         break;
                     //źle wybrana opcja menu
                     default:

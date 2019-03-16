@@ -1,12 +1,12 @@
 package org.pl.komis.car;
 
 public enum CarType {
-    SEDAN,
-    LIMOUSINE,
-    WAGON,
-    SUV,
-    HATCHBACK,
-    PICKUP,
+    CONVERTIBLE,
     FASTBACK,
-    CONVERTIBLE
+    HATCHBACK,
+    LIMOUSINE,
+    PICKUP,
+    SEDAN,
+    SUV,
+    WAGON
 }

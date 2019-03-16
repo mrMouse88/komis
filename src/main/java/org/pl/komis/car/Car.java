@@ -25,6 +25,30 @@ public class Car {
         return price;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public CarType getCarType() {
+        return carType;
+    }
+
     @Override
     public String toString() {
         return "Marka: " + brand + ", Model: " + model + ", Cena: " + price
