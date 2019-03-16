@@ -21,9 +21,7 @@ public class Main {
 //        CarList.removeCarFromList(1);
 //        CarList.showCarList();
 
-//        Menu.mainMenu();
-        System.out.println("podaj typ");
-        MenuUtils.getCarTypeFromUser();
+        Menu.mainMenu();
 
     }
 

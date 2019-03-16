@@ -12,7 +12,7 @@ public class Menu {
     }
 
     //wywietl opcje głównego menu
-    public static void showMainMenu() {
+    private static void showMainMenu() {
         System.out.println("Wybierz opcję:");
         System.out.println("1 - dodaj pojazd");
         System.out.println("2 - wyświetl listę");
@@ -20,6 +20,43 @@ public class Menu {
         System.out.println("4 - sprzedaj pojazd");
         System.out.println("5 - wyświetl przychód");
         System.out.println("6 - koniec");
+    }
+
+    //wyświetl menu sortowania
+    private static void showSortMenu() {
+        System.out.println("Sortuj po:");
+        System.out.println("1 - cenie");
+        System.out.println("2 - roczniku");
+        System.out.println("3 - przebiegu");
+        System.out.println("4 - nazwie");
+        System.out.println("5 - kolorze");
+    }
+
+    //logika menu sortowania
+    public static void sortMenu() {
+        Scanner input = new Scanner(System.in);
+        boolean flag = true;
+
+        while (flag == true) {
+            showSortMenu();
+            if (input.hasNextInt()) {
+                switch (input.nextInt()) {
+                    case 1:
+                        System.out.println("sortowanie1");
+                        flag = false;
+                        break;
+                    case 2:
+                        System.out.println("sortowanie2");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("zły wybór");
+                }
+            } else {
+                //czyszczenie scannera
+                input.nextLine();
+            }
+        }
     }
 
     //logika głównego menu
@@ -39,6 +76,10 @@ public class Menu {
                         System.out.println("Dostępne pojazdy:");
                         CarList.showCarList();
                         break;
+                    //przejdź do menu sortowania
+                    case 3:
+                        sortMenu();
+                        break;
                     //przedaj pojazd
                     case 4:
                         System.out.println("Podaj id auta");
@@ -46,7 +87,7 @@ public class Menu {
                         break;
                     //wyświetl stan konta
                     case 5:
-                        System.out.println("Stan konta: "+ Account.getAccount());
+                        System.out.println("Stan konta: " + Account.getAccount());
                         break;
                     //zakończ program
                     case 6:
