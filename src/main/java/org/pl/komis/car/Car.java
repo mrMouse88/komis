@@ -29,6 +29,6 @@ public class Car {
     public String toString() {
         return "Marka: " + brand + ", Model: " + model + ", Cena: " + price
                 + ", Przebieg: " + mileage + ", Rok produkcji: " + year
-                + ", Typ nadwozia: " + carType;
+                + ", Typ nadwozia: " + carType+", Kolor: "+color;
     }
 }

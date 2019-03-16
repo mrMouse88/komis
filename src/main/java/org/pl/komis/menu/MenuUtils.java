@@ -20,16 +20,16 @@ public class MenuUtils {
     }
 
     //pobierz stringa od usera
-    public static String getStringFromUser(){
-            Scanner input = new Scanner(System.in);
-            return input.nextLine();
+    public static String getStringFromUser() {
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
     }
 
     //pobierz cenę
-    public static BigDecimal getPriceFromUser(){
+    public static BigDecimal getPriceFromUser() {
         Scanner input = new Scanner(System.in);
-        while (true){
-            if (input.hasNextBigDecimal()){
+        while (true) {
+            if (input.hasNextBigDecimal()) {
                 return input.nextBigDecimal();
             }
             input.next();
@@ -37,12 +37,12 @@ public class MenuUtils {
     }
 
     //pobierz typ auta od usera
-    public static CarType getCarTypeFromUser(){
+    public static CarType getCarTypeFromUser() {
         Scanner input = new Scanner(System.in);
-        while (true){
+        while (true) {
             String type = input.nextLine();
-            for(CarType carType : CarType.values()){
-                if(carType.name().equals(type)){
+            for (CarType carType : CarType.values()) {
+                if (carType.name().equals(type)) {
                     return carType;
                 }
             }

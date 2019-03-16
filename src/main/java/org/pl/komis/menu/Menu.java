@@ -41,7 +41,7 @@ public class Menu {
                         break;
                     //przedaj pojazd
                     case 4:
-                        System.out.println("Podaj index auta");
+                        System.out.println("Podaj id auta");
                         CarList.removeCarFromList(MenuUtils.getIntFromUser());
                         break;
                     //wyświetl stan konta

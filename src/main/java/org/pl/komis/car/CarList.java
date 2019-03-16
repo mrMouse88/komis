@@ -52,7 +52,7 @@ public class CarList {
 
     public static void showCarList() {
         for (int i = 0; i < carList.size(); i++) {
-            System.out.print("Index: " + i + " ");
+            System.out.print("Id: " + i + " ");
             System.out.println(carList.get(i).toString());
         }
     }
