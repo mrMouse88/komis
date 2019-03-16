@@ -1,5 +1,6 @@
 package org.pl.komis.car;
 
+import org.pl.komis.account.Account;
 import org.pl.komis.car.Car;
 import org.pl.komis.car.CarType;
 import org.pl.komis.menu.MenuUtils;
@@ -37,10 +38,16 @@ public class CarList {
         String color = MenuUtils.getStringFromUser();
 
         Car car = new Car(brand, model, price, color, mileage, year, type);
+        carList.add(car);
     }
 
     public static void removeCarFromList(int index) {
-        carList.remove(index);
+        if (index<carList.size()-1 && index>=0){
+            Account.setAccount(carList.get(index).getPrice());
+            carList.remove(index);
+        }else{
+            System.out.println("Zły index");
+        }
     }
 
     public static void showCarList() {

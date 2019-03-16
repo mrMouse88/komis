@@ -21,16 +21,14 @@ public class Car {
         this.carType = carType;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", price=" + price +
-                ", color='" + color + '\'' +
-                ", mileage=" + mileage +
-                ", year=" + year +
-                ", carType=" + carType +
-                '}';
+        return "Marka: " + brand + ", Model: " + model + ", Cena: " + price
+                + ", Przebieg: " + mileage + ", Rok produkcji: " + year
+                + ", Typ nadwozia: " + carType;
     }
 }
