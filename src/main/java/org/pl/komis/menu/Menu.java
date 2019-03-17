@@ -2,8 +2,10 @@ package org.pl.komis.menu;
 
 import org.pl.komis.account.Account;
 import org.pl.komis.car.CarList;
+import org.pl.komis.filter.Filters;
 import org.pl.komis.sort.SortUtils;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Menu {
@@ -41,9 +43,61 @@ public class Menu {
         System.out.println("8 - typie");
     }
 
-    private static void showFilterMenu(){
+    //wyświetl menu filtrowania
+    private static void showFilterMenu() {
         System.out.println("Filtruj po:");
         System.out.println("1 - cenie");
+        System.out.println("2 - przebiegu");
+        System.out.println("3 - roczniku");
+        System.out.println("4 - marce");
+        System.out.println("5 - filtruj");
+    }
+
+    //logika filtrowania
+    public static void filterMenu() {
+        Scanner input = new Scanner(System.in);
+        Filters filters = new Filters(CarList.carList);
+        boolean flag = true;
+
+        while (flag == true) {
+            showFilterMenu();
+            if (input.hasNextInt()) {
+                switch (input.nextInt()) {
+                    case 1:
+                        System.out.println("Podaj minimalną cenę");
+                        BigDecimal minPrice = MenuUtils.getPriceFromUser();
+                        System.out.println("Podaj maksymalną cenę");
+                        BigDecimal maxPrice = MenuUtils.getPriceFromUser();
+                        filters.filterByPrice(minPrice, maxPrice);
+                        break;
+                    case 2:
+                        System.out.println("Podaj minimalny przebieg");
+                        int minMileage = MenuUtils.getIntFromUser();
+                        System.out.println("Podaj maksymalny przebieg");
+                        int maxMileage = MenuUtils.getIntFromUser();
+                        filters.filterByMileage(minMileage, maxMileage);
+                        break;
+                    case 3:
+                        System.out.println("Podaj minimalny rocznik");
+                        int minYear = MenuUtils.getIntFromUser();
+                        System.out.println("Podaj maksymalny rocznik");
+                        int maxYear = MenuUtils.getIntFromUser();
+                        filters.filterByYear(minYear, maxYear);
+                        break;
+                    case 4:
+                        System.out.println("Podaj markę");
+                        String brand = MenuUtils.getStringFromUser();
+                        filters.filterByBrand(brand);
+                        break;
+                    case 5:
+                        CarList.showCarList(filters.returnListOfCars());
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("zły wybór");
+                }
+            }
+        }
     }
 
     //logika menu sortowania
@@ -127,7 +181,8 @@ public class Menu {
                         sortMenu();
                         break;
                     case 4:
-                        //filtrowanie
+                        //przejdź do menu filtrowania
+                        filterMenu();
                         break;
                     //przedaj pojazd
                     case 5:
