@@ -57,6 +57,7 @@ public class CarList {
         System.out.println();
     }
 
+    //zapis do pliku tokeny
     public static void saveCarListToFile() {
         try {
             //przygotowanie pliku
@@ -88,6 +89,7 @@ public class CarList {
         }
     }
 
+    //odczyt z pliku tokeny
     public static void loadCarListFromFile() {
         String row = null;
         try {
@@ -104,6 +106,55 @@ public class CarList {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //zapis do pliku serializacja
+    public static void saveToFile(){
+        File file = new File("bazaS.txt");
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            for (Car car : CarList.carList){
+                o.writeObject(car);
+            }
+            o.close();
+            f.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    //odczyt z pliku serializacja
+    public static void readFromFile(){
+        File file = new File("bazaS.txt");
+        try {
+            FileInputStream f = new FileInputStream(file);
+            ObjectInputStream o = new ObjectInputStream(f);
+            try {
+                while (true) {
+                    carList.add((Car) o.readObject());
+                }
+            } catch (EOFException e) {
+                o.close();
+                f.close();
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Brak pliku bazy");
+        }catch (IOException e) {
+            e.printStackTrace();
+
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        readFromFile();
+        showCarList();
     }
 
 }

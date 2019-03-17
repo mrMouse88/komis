@@ -1,8 +1,9 @@
 package org.pl.komis.car;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Car {
+public class Car implements Serializable {
     private String brand;
     private String model;
     private BigDecimal price;

@@ -7,7 +7,11 @@ import java.util.Scanner;
 
 public class Menu {
     //wyświetl tekst startowy
-    public static void showInitial() {
+    public static void initial() {
+        //załaduj stan konta z pliku
+        Account.loadAccount();
+        //załaduj listę aut z pliku
+        CarList.readFromFile();
         System.out.println("Komis samochodowy 1.0");
     }
 
@@ -94,6 +98,7 @@ public class Menu {
                         flag = false;
                         Account.saveAccount();
                         CarList.saveCarListToFile();
+                        CarList.saveToFile();
                         break;
                     //źle wybrana opcja menu
                     default:
