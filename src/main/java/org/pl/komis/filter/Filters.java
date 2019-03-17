@@ -10,18 +10,6 @@ import java.util.stream.Stream;
 public class Filters {
     Stream cars;
 
-    boolean priceFlag = false;
-    boolean mileageFlag = false;
-    boolean yearFlag = false;
-    boolean brandFlag = false;
-
-    private BigDecimal minPrice;
-    private BigDecimal maxPrice;
-    private int minMileage;
-    private int maxMileage;
-    private int minYear;
-    private int maxYear;
-    private String brand;
 
     public Filters(List<Car> cars) {
         this.cars = cars.stream();
