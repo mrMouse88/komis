@@ -49,7 +49,7 @@ public class CarList {
         }
     }
 
-    public static void showCarList() {
+    public static void showCarList(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
             System.out.print("Id: " + i + " ");
             System.out.println(carList.get(i).toString());
@@ -150,11 +150,6 @@ public class CarList {
         }catch (ClassNotFoundException e){
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        readFromFile();
-        showCarList();
     }
 
 }

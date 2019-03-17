@@ -78,7 +78,7 @@ public class Menu {
                     //wyświetl listę
                     case 2:
                         System.out.println("Dostępne pojazdy:");
-                        CarList.showCarList();
+                        CarList.showCarList(CarList.carList);
                         break;
                     //przejdź do menu sortowania
                     case 3:

@@ -1,13 +1,15 @@
 package org.pl.komis.auth;
 
+import java.util.Base64;
 import java.util.Scanner;
 
 public class Authorization {
-    private String password = "pass1234";
+    private String password = "cGFzczEyMzQ=";
 
     //sprawdź poprawność hasła
     public boolean checkAuthorization(String password){
-        return this.password.equals(password);
+        String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
+        return this.password.equals(encodedPassword);
     }
 
     //pobierz hasło od usera
@@ -16,5 +18,6 @@ public class Authorization {
         System.out.println("Podaj hasło:");
         return input.nextLine();
     }
+
 }
 
