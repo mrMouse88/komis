@@ -2,6 +2,7 @@ package org.pl.komis.menu;
 
 import org.pl.komis.account.Account;
 import org.pl.komis.car.CarList;
+import org.pl.komis.car.CarType;
 import org.pl.komis.filter.Filters;
 import org.pl.komis.sort.SortUtils;
 
@@ -59,7 +60,7 @@ public class Menu {
         Filters filters = new Filters(CarList.carList);
         boolean flag = true;
 
-        while (flag == true) {
+        while (flag) {
             showFilterMenu();
             if (input.hasNextInt()) {
                 switch (input.nextInt()) {
@@ -90,7 +91,7 @@ public class Menu {
                         filters.filterByBrand(brand);
                         break;
                     case 5:
-                        CarList.showCarList(filters.returnListOfCars());
+                        MenuUtils.showCarList(filters.returnListOfCars());
                         flag = false;
                         break;
                     default:
@@ -105,48 +106,48 @@ public class Menu {
         Scanner input = new Scanner(System.in);
         boolean flag = true;
 
-        while (flag == true) {
+        while (flag) {
             showSortMenu();
             if (input.hasNextInt()) {
                 switch (input.nextInt()) {
                     case 1:
                         CarList.carList = SortUtils.sortByPriceAsc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 2:
                         CarList.carList = SortUtils.sortByPriceDesc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 3:
                         CarList.carList = SortUtils.sortByBrand();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 4:
                         CarList.carList = SortUtils.sortByMileageAsc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 5:
                         CarList.carList = SortUtils.sortByMileageDesc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 6:
                         CarList.carList = SortUtils.sortByYearAsc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 7:
                         CarList.carList = SortUtils.sortByYearDesc();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 8:
                         CarList.carList = SortUtils.sortByType();
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         flag = false;
                         break;
                     default:
@@ -169,12 +170,33 @@ public class Menu {
                 switch (input.nextInt()) {
                     //dodaj pojazd
                     case 1:
-                        CarList.addCarToList();
+                        System.out.println("Podaj markę");
+                        String brand = MenuUtils.getStringFromUser();
+
+                        System.out.println("Podaj model");
+                        String model = MenuUtils.getStringFromUser();
+
+                        System.out.println("Podaj rocznik");
+                        int year = MenuUtils.getIntFromUser();
+
+                        System.out.println("Podaj przebieg");
+                        int mileage = MenuUtils.getIntFromUser();
+
+                        System.out.println("Podaj cenę");
+                        BigDecimal price = MenuUtils.getPriceFromUser();
+
+                        System.out.println("Podaj typ nadwozia (SEDAN, LIMOUSINE, WAGON, " +
+                                "SUV, HATCHBACK, PICKUP, FASTBACK, CONVERTIBLE)");
+                        CarType type = MenuUtils.getCarTypeFromUser();
+
+                        System.out.println("Podaj kolor");
+                        String color = MenuUtils.getStringFromUser();
+                        CarList.addCarToList(brand, model, year,mileage, price, color, type);
                         break;
                     //wyświetl listę
                     case 2:
                         System.out.println("Dostępne pojazdy:");
-                        CarList.showCarList(CarList.carList);
+                        MenuUtils.showCarList(CarList.carList);
                         break;
                     //przejdź do menu sortowania
                     case 3:

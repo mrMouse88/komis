@@ -1,8 +1,10 @@
 package org.pl.komis.menu;
 
+import org.pl.komis.car.Car;
 import org.pl.komis.car.CarType;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuUtils {
@@ -51,5 +53,14 @@ public class MenuUtils {
             }
             input.nextLine();
         }
+    }
+
+    //wyświetlanie listy na konsoli
+    public static void showCarList(List<Car> carList) {
+        for (int i = 0; i < carList.size(); i++) {
+            System.out.print("Id: " + i + " ");
+            System.out.println(carList.get(i).toString());
+        }
+        System.out.println();
     }
 }

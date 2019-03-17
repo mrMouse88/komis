@@ -12,29 +12,8 @@ import java.util.StringTokenizer;
 public class CarList {
     public static List<Car> carList = new ArrayList<Car>();
 
-    public static void addCarToList() {
-
-        System.out.println("Podaj markę");
-        String brand = MenuUtils.getStringFromUser();
-
-        System.out.println("Podaj model");
-        String model = MenuUtils.getStringFromUser();
-
-        System.out.println("Podaj rocznik");
-        int year = MenuUtils.getIntFromUser();
-
-        System.out.println("Podaj przebieg");
-        int mileage = MenuUtils.getIntFromUser();
-
-        System.out.println("Podaj cenę");
-        BigDecimal price = MenuUtils.getPriceFromUser();
-
-        System.out.println("Podaj typ nadwozia (SEDAN, LIMOUSINE, WAGON, " +
-                "SUV, HATCHBACK, PICKUP, FASTBACK, CONVERTIBLE)");
-        CarType type = MenuUtils.getCarTypeFromUser();
-
-        System.out.println("Podaj kolor");
-        String color = MenuUtils.getStringFromUser();
+    public static void addCarToList(String brand, String model, int year, int mileage, BigDecimal price, String color
+            , CarType type) {
 
         Car car = new Car(brand, model, price, color, mileage, year, type);
         carList.add(car);
@@ -49,13 +28,7 @@ public class CarList {
         }
     }
 
-    public static void showCarList(List<Car> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.print("Id: " + i + " ");
-            System.out.println(carList.get(i).toString());
-        }
-        System.out.println();
-    }
+
 
     //zapis do pliku tokeny
     public static void saveCarListToFile() {
