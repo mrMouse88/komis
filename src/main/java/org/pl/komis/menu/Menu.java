@@ -2,6 +2,7 @@ package org.pl.komis.menu;
 
 import org.pl.komis.account.Account;
 import org.pl.komis.car.CarList;
+import org.pl.komis.sort.SortUtils;
 
 import java.util.Scanner;
 
@@ -21,19 +22,28 @@ public class Menu {
         System.out.println("1 - dodaj pojazd");
         System.out.println("2 - wyświetl listę");
         System.out.println("3 - sortuj listę");
-        System.out.println("4 - sprzedaj pojazd");
-        System.out.println("5 - wyświetl stan konta");
-        System.out.println("6 - koniec");
+        System.out.println("4 - filtruj listę");
+        System.out.println("5 - sprzedaj pojazd");
+        System.out.println("6 - wyświetl stan konta");
+        System.out.println("7 - koniec");
     }
 
     //wyświetl menu sortowania
     private static void showSortMenu() {
         System.out.println("Sortuj po:");
+        System.out.println("1 - cenie rosnąco");
+        System.out.println("2 - cenie malejąco");
+        System.out.println("3 - marce");
+        System.out.println("4 - przebiegu rosnąco");
+        System.out.println("5 - przebiegu malejąco");
+        System.out.println("6 - roczniku rosnąco");
+        System.out.println("7 - roczniku malejąco");
+        System.out.println("8 - typie");
+    }
+
+    private static void showFilterMenu(){
+        System.out.println("Filtruj po:");
         System.out.println("1 - cenie");
-        System.out.println("2 - roczniku");
-        System.out.println("3 - przebiegu");
-        System.out.println("4 - nazwie");
-        System.out.println("5 - kolorze");
     }
 
     //logika menu sortowania
@@ -46,11 +56,43 @@ public class Menu {
             if (input.hasNextInt()) {
                 switch (input.nextInt()) {
                     case 1:
-                        System.out.println("sortowanie1");
+                        CarList.carList = SortUtils.sortByPriceAsc();
+                        CarList.showCarList(CarList.carList);
                         flag = false;
                         break;
                     case 2:
-                        System.out.println("sortowanie2");
+                        CarList.carList = SortUtils.sortByPriceDesc();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 3:
+                        CarList.carList = SortUtils.sortByBrand();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 4:
+                        CarList.carList = SortUtils.sortByMileageAsc();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 5:
+                        CarList.carList = SortUtils.sortByMileageDesc();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 6:
+                        CarList.carList = SortUtils.sortByYearAsc();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 7:
+                        CarList.carList = SortUtils.sortByYearDesc();
+                        CarList.showCarList(CarList.carList);
+                        flag = false;
+                        break;
+                    case 8:
+                        CarList.carList = SortUtils.sortByType();
+                        CarList.showCarList(CarList.carList);
                         flag = false;
                         break;
                     default:
@@ -84,17 +126,20 @@ public class Menu {
                     case 3:
                         sortMenu();
                         break;
-                    //przedaj pojazd
                     case 4:
+                        //filtrowanie
+                        break;
+                    //przedaj pojazd
+                    case 5:
                         System.out.println("Podaj id auta");
                         CarList.removeCarFromList(MenuUtils.getIntFromUser());
                         break;
                     //wyświetl stan konta
-                    case 5:
+                    case 6:
                         System.out.println("Stan konta: " + Account.getAccount());
                         break;
                     //zakończ program
-                    case 6:
+                    case 7:
                         flag = false;
                         Account.saveAccount();
                         CarList.saveCarListToFile();
